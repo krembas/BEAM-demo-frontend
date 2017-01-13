@@ -1,0 +1,36 @@
+<div>
+    <form novalidate>
+
+      <div class="form-group">
+        <textarea
+          class="form-input"
+          ng-model="$ctrl.model.input"
+          ui-codemirror
+          ui-codemirror-opts="$ctrl.editorOptions"
+          ></textarea>
+      </div>
+
+      <div class="form-group">
+        <button
+          type="button"
+          name="button"
+          class="btn btn-primary"
+          ng-click="$ctrl.sendCode()"
+          ng-disabled="$ctrl.isBusy()"
+          >
+          Eval it!
+        </button>
+      </div>
+
+      <pfc-loader-icon resolve="$ctrl.promise"></pfc-loader-icon>
+    </form>
+
+    <div ng-if="$ctrl.model.output">
+      <h4>Result:</h4>
+      <div class="well"><pre>{{ $ctrl.model.output }}</pre></div>
+    </div>
+
+    <div class="alert alert-danger" ng-if="$ctrl.hasError()">
+      Request failed
+    </div>
+</div>

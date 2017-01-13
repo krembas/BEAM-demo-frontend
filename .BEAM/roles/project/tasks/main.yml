@@ -1,0 +1,12 @@
+---
+  - name: Set backend endpoint value
+    lineinfile:
+      dest: ~/{{ BEAM_VARS.PROJECT.NAME }}/project/.env
+      regexp: ^API_URL=
+      line: "API_URL=http://{{hostvars.django_backend.ansible_host}}:8081/eval/"
+  - name: Install app node dependencies
+    npm: path=~/{{ BEAM_VARS.PROJECT.NAME }}/project
+  - name: Build app
+    command: npm run build chdir=~/{{ BEAM_VARS.PROJECT.NAME }}/project
+
+

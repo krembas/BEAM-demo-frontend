@@ -1,0 +1,29 @@
+---
+- name: start angularapp service
+  service: name={{ item }} state=started enabled=yes
+  become: yes
+  with_items:
+   - nginx
+  when: BEAM_VARS.JOB.SERVICE_COMMAND=="start" and inventory_hostname=="angular_frontend"
+
+- name: restart angularapp service
+  service: name={{ item }} state=restarted enabled=yes
+  become: yes
+  with_items:
+    - nginx
+  when: BEAM_VARS.JOB.SERVICE_COMMAND=="restart" and inventory_hostname=="angular_frontend"
+
+- name: reload angularapp service
+  service: name={{ item }} state=reloaded enabled=yes
+  become: yes
+  with_items:
+    - nginx
+  when: BEAM_VARS.JOB.SERVICE_COMMAND=="reload" and inventory_hostname=="angular_frontend"
+
+- name: stop angularapp service
+  service: name={{ item }} state=stopped enabled=yes
+  become: yes
+  with_items:
+    - nginx
+  when: BEAM_VARS.JOB.SERVICE_COMMAND=="stop" and inventory_hostname=="angular_frontend"
+
