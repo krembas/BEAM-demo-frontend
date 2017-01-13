@@ -1,5 +1,5 @@
 {
-  "name": "beam-poc-project-fe",
+  "name": "beam-demo-project-frontend",
   "version": "1.0.0",
   "scripts": {
     "build": "webpack",
