@@ -1,4 +1,4 @@
-# Sample frotnend project
+# Sample frotnend project component (how to install without BEAM support)
 
 ## Requirements
 
